@@ -8,4 +8,4 @@ Just testing Rust and its crates (so far so good).
 
 ## To Do
 
-* Clean up the code and split it into many files
+* Clean up the code and split it into many files ("modules")
