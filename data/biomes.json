@@ -8,48 +8,24 @@
                 "display_name": "Grass",
                 "glyph": ",",
                 "weight": 65,
-                "fg_color": [
-                    0,
-                    255,
-                    0
-                ],
-                "bg_color": [
-                    0,
-                    20,
-                    0
-                ]
+                "fg_color": [0, 255, 0],
+                "bg_color": [0, 20, 0]
             },
             {
                 "name": "dirt",
                 "display_name": "Dirt",
                 "glyph": ".",
                 "weight": 10,
-                "fg_color": [
-                    150,
-                    20,
-                    20
-                ],
-                "bg_color": [
-                    0,
-                    20,
-                    0
-                ]
+                "fg_color": [150, 20, 20],
+                "bg_color": [0, 20, 0]
             },
             {
                 "name": "bush",
                 "display_name": "Bush",
                 "glyph": "#",
                 "weight": 3,
-                "fg_color": [
-                    20,
-                    200,
-                    20
-                ],
-                "bg_color": [
-                    0,
-                    20,
-                    0
-                ]
+                "fg_color": [20, 200, 20],
+                "bg_color": [0, 20, 0]
             }
         ]
     }

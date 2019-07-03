@@ -1,12 +1,12 @@
-use super::map::{ Map, MapGenerator };
-use super::super::wg_gui::gameLog::GameLog;
 use super::super::wg_core::config::Config;
-
+use super::super::wg_gui::game_log::GameLog;
+use super::super::wg_managers::turn_manager::TurnManager;
+use super::map::{Map, MapGenerator};
 
 pub struct World {
     pub map: Map,
     pub log: GameLog,
-    pub turn_no: u32,
+    pub turn_mgr: TurnManager,
 }
 
 impl World {
@@ -14,7 +14,7 @@ impl World {
         World {
             map: MapGenerator::generate_map(Config::get().MAP_WIDTH, Config::get().MAP_HEIGHT),
             log: GameLog::create(),
-            turn_no: 0,
+            turn_mgr: TurnManager::create(),
         }
     }
 
@@ -30,31 +30,17 @@ impl World {
     }
 
     pub fn end_turn(&mut self) -> () {
-        self.turn_no += 1;
+        self.turn_mgr.next_turn();
         self.log
-            .push_message(String::from(format!("Turn# {}", self.turn_no)));
+            .push_message(String::from(format!("Turn# {}", self.turn_mgr.get_turn())));
     }
 
+    pub fn tick(&mut self, root: &mut tcod::RootConsole) -> () {
+        self.end_turn();
+    }
 
-    pub fn tick(&mut self, root: &mut tcod::RootConsole) -> bool {
-        // Key events
-        let key = root.wait_for_keypress(true);
-
-        if key.code == tcod::input::KeyCode::Escape {
-            return false;
-        }
-
-        if key.printable == 'r' {
-            self.map =
-                MapGenerator::generate_map(Config::get().MAP_WIDTH, Config::get().MAP_HEIGHT);
-            self.log.push_message(String::from("MAP REBUILT!!"));
-        }
-
-        if key.code == tcod::input::KeyCode::Enter || key.code == tcod::input::KeyCode::NumPadEnter
-        {
-            self.end_turn();
-        }
-
-        true
+    pub fn recreate_map(&mut self) -> () {
+        self.map = MapGenerator::generate_map(Config::get().MAP_WIDTH, Config::get().MAP_HEIGHT);
+        self.log.push_message(String::from("MAP REBUILT!!"));
     }
 }

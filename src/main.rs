@@ -7,11 +7,14 @@ use std::fs;
 use tcod::Console;
 
 mod wg_core;
-mod wg_world;
 mod wg_gui;
+mod wg_managers;
+mod wg_tests;
+mod wg_utils;
+mod wg_world;
+
 use wg_core::config::Config;
 use wg_world::world::World;
-
 
 fn main() {
     let mut root = tcod::RootInitializer::new()
@@ -68,6 +71,15 @@ fn main() {
             1.0,
         );
         tcod::console::blit(
+            &entities_console,
+            (0, 0),
+            (0, 0),
+            &mut map_console,
+            (0, 0),
+            1.0,
+            1.0,
+        );
+        tcod::console::blit(
             &log_console,
             (0, 0),
             (0, 0),
@@ -91,6 +103,22 @@ fn main() {
 
         root.flush();
 
-        running = world.tick(&mut root);
+        world.tick(&mut root);
+
+        // Key events
+        let key = root.wait_for_keypress(true);
+
+        if key.code == tcod::input::KeyCode::Escape {
+            running = false;
+        }
+
+        if key.printable == 'r' {
+            world.recreate_map();
+        }
+
+        if key.code == tcod::input::KeyCode::Enter || key.code == tcod::input::KeyCode::NumPadEnter
+        {
+            world.end_turn();
+        }
     }
 }

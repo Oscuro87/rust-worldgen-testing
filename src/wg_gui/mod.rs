@@ -1,1 +1,1 @@
-pub mod gameLog;
+pub mod game_log;
