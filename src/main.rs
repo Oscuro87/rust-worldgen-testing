@@ -44,11 +44,8 @@ fn main() {
         root.clear();
 
         // Draw
-        // Info screen
-        info_console.print(1, 1, "INFO");
-        info_console.horizontal_line(0, 0, info_console.width(), tcod::BackgroundFlag::None);
-        info_console.vertical_line(0, 0, info_console.height(), tcod::BackgroundFlag::None);
-        info_console.print(0, 0, "#");
+        // Map screen
+        map_console.print(2, 2, "Generating map...");
         // Log screen
         log_console.horizontal_line(0, 0, log_console.width(), tcod::BackgroundFlag::None);
         log_console.print(0, 1, "LOGS");
@@ -103,22 +100,24 @@ fn main() {
 
         root.flush();
 
-        world.tick(&mut root);
-
         // Key events
         let key = root.wait_for_keypress(true);
 
-        if key.code == tcod::input::KeyCode::Escape {
-            running = false;
+        match key.code {
+            tcod::input::KeyCode::Escape => {
+                running = false;
+            }
+            tcod::input::KeyCode::Enter | tcod::input::KeyCode::NumPadEnter => {
+                world.tick(&mut root);
+            }
+            _ => {}
         }
 
-        if key.printable == 'r' {
-            world.recreate_map();
-        }
-
-        if key.code == tcod::input::KeyCode::Enter || key.code == tcod::input::KeyCode::NumPadEnter
-        {
-            world.end_turn();
+        match key.printable {
+            'r' => {
+                world.recreate_map();
+            }
+            _ => {}
         }
     }
 }

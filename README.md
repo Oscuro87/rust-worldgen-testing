@@ -8,8 +8,9 @@ Just testing Rust and its crates (so far so good).
 
 * ~~Clean up the code and split it into many files ("modules")~~
 * Bug: On turn 0, the background of the map is not drawn
-* Player
+* Populate the info screen
 * Camera
+* Player
 * Modding
 
 ## Configuration

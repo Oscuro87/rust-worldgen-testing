@@ -2,7 +2,6 @@ use super::biome::BiomeLibrary;
 use super::tile::Tile;
 use tcod::console::Console;
 
-
 pub struct Map {
     pub width: i32,
     pub height: i32,
