@@ -1,6 +1,5 @@
 use tcod::console::Console;
 
-
 pub struct GameLog {
     messages: Vec<String>,
 }
@@ -25,7 +24,7 @@ impl GameLog {
         let start_at: usize = self.messages.len();
         let end_at: i32 = start_at as i32 - max_messages;
 
-        println!("Start at: {} | End at: {}", start_at, end_at);
+        // println!("Start at: {} | End at: {}", start_at, end_at);
 
         for i in 0..max_messages as usize {
             let index: usize = (self.messages.len() - 1) - i;

@@ -6,6 +6,10 @@
             {
                 "name": "grass",
                 "display_name": "Grass",
+                "meta": {
+                    "movement_cost": 1.0,
+                    "blocks_sight": false
+                },
                 "glyph": ",",
                 "weight": 65,
                 "fg_color": [0, 255, 0],
@@ -14,6 +18,10 @@
             {
                 "name": "dirt",
                 "display_name": "Dirt",
+                "meta": {
+                    "movement_cost": 1.0,
+                    "blocks_sight": false
+                },
                 "glyph": ".",
                 "weight": 10,
                 "fg_color": [150, 20, 20],
@@ -22,6 +30,10 @@
             {
                 "name": "bush",
                 "display_name": "Bush",
+                "meta": {
+                    "movement_cost": 2.2,
+                    "blocks_sight": false
+                },
                 "glyph": "#",
                 "weight": 3,
                 "fg_color": [20, 200, 20],
