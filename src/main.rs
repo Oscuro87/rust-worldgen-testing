@@ -2,8 +2,7 @@
 extern crate serde_derive;
 extern crate rand;
 extern crate serde_json;
-use rand::prelude::*;
-use std::fs;
+extern crate tcod;
 use tcod::Console;
 
 mod wg_core;
@@ -25,6 +24,7 @@ fn main() {
         .fullscreen(false)
         .renderer(tcod::Renderer::SDL)
         .init();
+    tcod::input::show_cursor(false);
 
     let mut running: bool = true;
     let mut world = World::new();

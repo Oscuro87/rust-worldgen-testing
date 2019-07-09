@@ -14,7 +14,7 @@ impl Biome {
         let mut rng = rand::thread_rng();
         let slice = self.tiles.as_slice();
         slice
-            .choose_weighted(&mut rng, |item| item.weight)
+            .choose_weighted(&mut rng, |item| item.meta.weight)
             .unwrap()
             .clone()
     }

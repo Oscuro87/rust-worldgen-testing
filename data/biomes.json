@@ -7,11 +7,14 @@
                 "name": "grass",
                 "display_name": "Grass",
                 "meta": {
-                    "movement_cost": 1.0,
-                    "blocks_sight": false
+                    "movement_cost": 1,
+                    "blocks_sight": false,
+                    "cluster_chance": 0,
+                    "cluster_size_min": 0,
+                    "cluster_size_max": 0
                 },
-                "glyph": ",",
-                "weight": 65,
+                "glyph": ".",
+                "weight": 1000,
                 "fg_color": [0, 255, 0],
                 "bg_color": [0, 20, 0]
             },
@@ -19,11 +22,14 @@
                 "name": "dirt",
                 "display_name": "Dirt",
                 "meta": {
-                    "movement_cost": 1.0,
-                    "blocks_sight": false
+                    "movement_cost": 1,
+                    "blocks_sight": false,
+                    "cluster_chance": 0,
+                    "cluster_size_min": 0,
+                    "cluster_size_max": 0
                 },
                 "glyph": ".",
-                "weight": 10,
+                "weight": 250,
                 "fg_color": [150, 20, 20],
                 "bg_color": [0, 20, 0]
             },
@@ -32,11 +38,44 @@
                 "display_name": "Bush",
                 "meta": {
                     "movement_cost": 2.2,
-                    "blocks_sight": false
+                    "blocks_sight": false,
+                    "cluster_chance": 70,
+                    "cluster_size_min": 3,
+                    "cluster_size_max": 20
                 },
                 "glyph": "#",
-                "weight": 3,
+                "weight": 25,
                 "fg_color": [20, 200, 20],
+                "bg_color": [0, 20, 0]
+            },
+            {
+                "name": "tree",
+                "display_name": "Tree",
+                "meta": {
+                    "movement_cost": 0,
+                    "blocks_sight": true,
+                    "cluster_chance": 5,
+                    "cluster_size_min": 2,
+                    "cluster_size_max": 4
+                },
+                "glyph": "^",
+                "weight": 7,
+                "fg_color": [0, 120, 0],
+                "bg_color": [0, 20, 0]
+            },
+            {
+                "name": "boulder",
+                "display_name": "Boulder",
+                "meta": {
+                    "movement_cost": 0,
+                    "blocks_sight": true,
+                    "cluster_chance": 25,
+                    "cluster_size_min": 3,
+                    "cluster_size_max": 6
+                },
+                "glyph": "O",
+                "weight": 2,
+                "fg_color": [160, 160, 160],
                 "bg_color": [0, 20, 0]
             }
         ]

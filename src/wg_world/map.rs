@@ -1,19 +1,22 @@
-use super::biome::BiomeLibrary;
+use super::biome::{ Biome, BiomeLibrary };
 use super::tile::Tile;
+use crate::wg_utils::point_2d::Point2D;
 use tcod::console::Console;
 
 pub struct Map {
     pub width: i32,
     pub height: i32,
     pub tiles: Vec<Tile>,
+    pub biome: Biome,
 }
 
 impl Map {
-    pub fn create(width: i32, height: i32, tiles: Vec<Tile>) -> Self {
+    pub fn create(width: i32, height: i32, tiles: Vec<Tile>, biome: Biome) -> Self {
         Map {
             width,
             height,
             tiles,
+            biome,
         }
     }
 
@@ -45,6 +48,14 @@ impl Map {
 pub struct MapGenerator;
 
 impl MapGenerator {
+    fn generate_cluster_at(tile_mold: Tile, epicenter: Point2D) {
+        unimplemented!()
+    }
+
+    fn does_clusterize(tile: Tile) -> bool {
+        
+    }
+
     pub fn generate_map(width: i32, height: i32) -> Map {
         let mut tiles: Vec<Tile> = vec![];
         let biome = BiomeLibrary::get_biome_by_name("plains").unwrap();
@@ -54,6 +65,6 @@ impl MapGenerator {
             tiles.push(picked_tile);
         }
 
-        Map::create(width, height, tiles)
+        Map::create(width, height, tiles, biome)
     }
 }
