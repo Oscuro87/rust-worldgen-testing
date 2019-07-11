@@ -2,81 +2,79 @@
     {
         "name": "plains",
         "display_name": "Plains",
-        "tiles": [
-            {
-                "name": "grass",
-                "display_name": "Grass",
-                "meta": {
-                    "movement_cost": 1,
-                    "blocks_sight": false,
-                    "cluster_chance": 0,
-                    "cluster_size_min": 0,
-                    "cluster_size_max": 0
-                },
-                "glyph": ".",
-                "weight": 1000,
-                "fg_color": [0, 255, 0],
-                "bg_color": [0, 20, 0]
-            },
+        "soils": [
             {
                 "name": "dirt",
                 "display_name": "Dirt",
                 "meta": {
+                    "weight": 1000
+                },
+                "color": [100, 90, 0]
+            },
+            {
+                "name": "small_grass",
+                "display_name": "Small Grass",
+                "meta": {
+                    "weight": 25000
+                },
+                "color": [0, 40, 0]
+            }
+        ],
+        "tiles": [
+            {
+                "name": "empty",
+                "display_name": "",
+                "meta": {
+                    "weight": 4500,
                     "movement_cost": 1,
-                    "blocks_sight": false,
-                    "cluster_chance": 0,
-                    "cluster_size_min": 0,
-                    "cluster_size_max": 0
+                    "blocks_sight": false
+                },
+                "glyph": " ",
+                "color": [0, 0, 0]
+            },
+            {
+                "name": "grass",
+                "display_name": "Knee-High Grass",
+                "meta": {
+                    "weight": 1000,
+                    "movement_cost": 1,
+                    "blocks_sight": false
                 },
                 "glyph": ".",
-                "weight": 250,
-                "fg_color": [150, 20, 20],
-                "bg_color": [0, 20, 0]
+                "color": [0, 255, 0]
             },
             {
                 "name": "bush",
                 "display_name": "Bush",
                 "meta": {
+                    "weight": 25,
                     "movement_cost": 2.2,
-                    "blocks_sight": false,
-                    "cluster_chance": 70,
-                    "cluster_size_min": 3,
-                    "cluster_size_max": 20
+                    "blocks_sight": false
                 },
                 "glyph": "#",
-                "weight": 25,
-                "fg_color": [20, 200, 20],
-                "bg_color": [0, 20, 0]
+                "color": [20, 200, 20]
             },
             {
                 "name": "tree",
                 "display_name": "Tree",
                 "meta": {
+                    "weight": 7,
                     "movement_cost": 0,
-                    "blocks_sight": true,
-                    "cluster_chance": 5,
-                    "cluster_size_min": 2,
-                    "cluster_size_max": 4
+                    "blocks_sight": true
                 },
                 "glyph": "^",
-                "weight": 7,
-                "fg_color": [0, 120, 0],
-                "bg_color": [0, 20, 0]
+                "color": [0, 120, 0]
             },
             {
                 "name": "boulder",
                 "display_name": "Boulder",
                 "meta": {
+                    "weight": 2,
                     "movement_cost": 0,
-                    "blocks_sight": true,
-                    "cluster_chance": 25,
-                    "cluster_size_min": 3,
-                    "cluster_size_max": 6
+                    "blocks_sight": true
                 },
                 "glyph": "O",
-                "weight": 2,
-                "fg_color": [160, 160, 160],
-                "bg_color": [0, 20, 0]
+                "color": [160, 160, 160]
             }
         ]
     }

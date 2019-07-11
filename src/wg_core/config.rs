@@ -13,7 +13,8 @@ pub struct Config {
 
 impl Config {
     pub fn get() -> Self {
-        let json_contents: String = fs::read_to_string("data/config.json").expect("Cannot read the config file!");
+        let json_contents: String =
+            fs::read_to_string("data/config.json").expect("Cannot read the config file!");
         let config: Config = serde_json::from_str(&json_contents).unwrap();
 
         Config {
