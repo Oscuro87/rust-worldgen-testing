@@ -6,7 +6,7 @@ pub trait Layer<T> {
     fn create(width: i32, height: i32, fill_with: Vec<T>) -> Self;
     fn get_cell_ref_from_point(&self, x: i32, y: i32) -> &T;
     fn get_mutable_cell_ref_from_point(&mut self, x: i32, y: i32) -> &mut T;
-    // fn does_cell_exist_at_point(&self, x: i32, y: i32) -> bool;
+    fn does_cell_exist_at_point(&self, x: i32, y: i32) -> bool;
     fn replace_cell(&mut self, at_position: (i32, i32), with: T) -> ();
 }
 
@@ -45,6 +45,10 @@ impl Layer<Tile> for TileLayer {
     fn get_mutable_cell_ref_from_point(&mut self, x: i32, y: i32) -> &mut Tile {
         assert!(x >= 0 && y >= 0 && x < self.width && y < self.height);
         &mut self.tiles[Point2D::calc_index_from_point(Point2D::create(x, y), self.width) as usize]
+    }
+
+    fn does_cell_exist_at_point(&self, x: i32, y: i32) -> bool {
+        self.get_cell_ref_from_point(x, y).name != ""
     }
 
     fn replace_cell(&mut self, at_position: (i32, i32), with: Tile) -> () {
@@ -88,6 +92,10 @@ impl Layer<Soil> for SoilLayer {
     fn get_mutable_cell_ref_from_point(&mut self, x: i32, y: i32) -> &mut Soil {
         assert!(x >= 0 && y >= 0 && x < self.width && y < self.height);
         &mut self.soils[Point2D::calc_index_from_point(Point2D::create(x, y), self.width) as usize]
+    }
+
+    fn does_cell_exist_at_point(&self, x: i32, y: i32) -> bool {
+        self.get_cell_ref_from_point(x, y).name != ""
     }
 
     fn replace_cell(&mut self, at_position: (i32, i32), with: Soil) -> () {
