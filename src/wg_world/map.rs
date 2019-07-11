@@ -1,6 +1,7 @@
 use super::biome::{Biome, BiomeLibrary};
 use super::layers::{Layer, SoilLayer, TileLayer};
 use super::tile::{Soil, Tile};
+use crate::wg_utils::point_2d::Point2D;
 use tcod::console::Console;
 
 pub struct Map {
@@ -33,15 +34,8 @@ impl Map {
             for x in 0..self.width {
                 let current_soil_ref: &Soil = self.soils.get_cell_ref_from_point(x, y);
                 let current_tile_ref: &Tile = self.tiles.get_cell_ref_from_point(x, y);
-                map_console.set_char_foreground(
-                    x,
-                    y,
-                    tcod::Color::new(
-                        current_tile_ref.color[0],
-                        current_tile_ref.color[1],
-                        current_tile_ref.color[2],
-                    ),
-                );
+                map_console.print(x, y, &current_tile_ref.glyph);
+
                 map_console.set_char_background(
                     x,
                     y,
@@ -53,7 +47,15 @@ impl Map {
                     tcod::BackgroundFlag::Set,
                 );
 
-                map_console.print(x, y, &current_tile_ref.glyph);
+                map_console.set_char_foreground(
+                    x,
+                    y,
+                    tcod::Color::new(
+                        current_tile_ref.color[0],
+                        current_tile_ref.color[1],
+                        current_tile_ref.color[2],
+                    ),
+                );
             }
         }
     }
@@ -68,11 +70,12 @@ impl MapGenerator {
         let biome = BiomeLibrary::get_biome_by_name("plains").unwrap();
 
         for index in 0..(width * height) {
-            // let point: Point2D = Point2D::calc_point_from_index(index, width);
+            let point: Point2D = Point2D::calc_point_from_index(index, width);
             let picked_soil = biome.pick_random_soil();
+            soils.replace_cell((point.x, point.y), picked_soil);
+
             let picked_tile = biome.pick_random_tile();
-            soils.push_cell(picked_soil);
-            tiles.push_cell(picked_tile);
+            tiles.replace_cell((point.x, point.y), picked_tile);
         }
 
         Map::create(width, height, soils, tiles, biome)

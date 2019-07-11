@@ -17,7 +17,7 @@
                 "meta": {
                     "weight": 25000
                 },
-                "color": [0, 40, 0]
+                "color": [0, 15, 0]
             }
         ],
         "tiles": [
@@ -40,7 +40,7 @@
                     "movement_cost": 1,
                     "blocks_sight": false
                 },
-                "glyph": ".",
+                "glyph": "\"",
                 "color": [0, 255, 0]
             },
             {
@@ -52,7 +52,7 @@
                     "blocks_sight": false
                 },
                 "glyph": "#",
-                "color": [20, 200, 20]
+                "color": [50, 200, 50]
             },
             {
                 "name": "tree",
@@ -63,7 +63,7 @@
                     "blocks_sight": true
                 },
                 "glyph": "^",
-                "color": [0, 120, 0]
+                "color": [0, 90, 0]
             },
             {
                 "name": "boulder",

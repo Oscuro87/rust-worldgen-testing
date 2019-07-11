@@ -1,7 +1,7 @@
 #[derive(Debug, Clone, Copy)]
 pub struct Point2D {
-    x: i32,
-    y: i32,
+    pub x: i32,
+    pub y: i32,
 }
 
 impl PartialEq<Point2D> for Point2D {
