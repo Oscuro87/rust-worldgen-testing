@@ -1,7 +1,6 @@
 use super::biome::{Biome, BiomeLibrary};
 use super::layers::{Layer, SoilLayer, TileLayer};
 use super::tile::{Soil, Tile};
-use crate::wg_utils::point_2d::Point2D;
 use tcod::console::Console;
 
 pub struct Map {
